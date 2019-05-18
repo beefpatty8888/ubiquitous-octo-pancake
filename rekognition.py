@@ -60,16 +60,25 @@ class rekognition:
 def handlerLabel(args):
 
     rekog = rekognition()
-    rekog.imageLabels(labelFileName)
+    if args.filename:
+      rekog.imageLabels(args.filename)
+    else:
+      rekog.imageLabels(labelFileName)
  
 def handlerCelebrity(args):
 
     rekog = rekognition()
-    rekog.imageCelebrity(celebrityFileName)
+    if args.filename:
+      rekog.imageCelebrity(args.filename)
+    else:
+      rekog.imageCelebrity(celebrityFileName)
 
 def handlerText(args):
     rekog = rekognition()
-    rekog.imageText(celebrityFileName)
+    if args.filename:
+      rekog.imageText(args.filename)
+    else:
+      rekog.imageText(celebrityFileName)
 
 def main():
 
@@ -80,8 +89,11 @@ def main():
     subparsers = parser.add_subparsers(dest="subparser_name")
 
     detectLabels = subparsers.add_parser("label", help="Detect labels from image.")
+    detectLabels.add_argument("--filename", type=str, help="Image filename path")
     celebrityImage = subparsers.add_parser("celebrity", help="Recognize celebrities from image.")
+    celebrityImage.add_argument("--filename", type=str, help="Image filename path")
     textImage = subparsers.add_parser("text", help="Detect text from image.")
+    textImage.add_argument("--filename", type=str, help="Image filename path")
     
     # https://stackoverflow.com/questions/8724262/argparse-why-the-code-is-executed-without-being-called
     # https://codereview.stackexchange.com/questions/93301/argparse-with-subparsers
