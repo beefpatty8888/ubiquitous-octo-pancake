@@ -11,15 +11,18 @@ Vision.
 
 Text Recognition Test:
 ```
-./rekognition.py text
+./rekognition.py text --filename "<path to image file>"
 ```
 
 Celebrity Recognition Test:
 ```
-./rekognition.py celebrity
+./rekognition.py celebrity --filename "<path to image file>"
 ```
 
 Label Recognition Test:
 ```
-./rekognition.py label
+./rekognition.py label --filename "<path to image file>"
 ```
+
+Alternatively, omit the `--filename` parameter to use the
+default images in this repository.
